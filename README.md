@@ -1,13 +1,6 @@
 # CTPanoramaView
 
-[![CI Status](http://img.shields.io/travis/scihant/CTPanoramaView.svg?style=flat)](https://travis-ci.org/scihant/CTPanoramaView)
-[![Cocoapods Compatible](https://img.shields.io/cocoapods/v/CTPanoramaView.svg)](https://img.shields.io/cocoapods/v/CTPanoramaView.svg)
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Issues](https://img.shields.io/github/issues/scihant/CTPanoramaView.svg?style=flat)](http://www.github.com/scihant/CTPanoramaView/issues?state=open)
-
 CTPanoramaView is a high-performance library that uses SceneKit to display complete spherical or cylindrical panoramas with touch or motion based controls.
-
-![panorama_demo](https://cloud.githubusercontent.com/assets/3991481/23154113/ce5aa6b8-f814-11e6-9c97-4d91629733f8.gif)
 
 ## Requirements
 
@@ -21,19 +14,11 @@ CTPanoramaView can be used both from Objective-C and Swift code.
 
 ## Installation
 
-### Using Carthage
-
-To install CTPanoramaView using [Carthage](https://github.com/Carthage/Carthage), add the folowing line into your Cartfile:
-
-    github "scihant/CTPanoramaView" ~> 1.3
-
-Then run the `carthage update` command to build the framework and drag the built `CTPanoramaView.framework` into your XCode project.
-
 ### Using CocoaPods
 
 To install CTPanoramaView using [CocoaPods](http://cocoapods.org), add the following line into your Podfile:
 
-    pod "CTPanoramaView", "~> 1.3"
+    pod "CTPanoramaView", "~> 1.5"
 
 Then run the `pod install` command and use the created workspace to open your project from now on.  
 
@@ -57,8 +42,6 @@ Then load a panoramic image and set it as the image of the CTPanoramaView instan
 let image = UIImage(named: "panoramicImage.png")
 panaromaView.image = image
 ```
-
-![panorama_screenshot](https://cloud.githubusercontent.com/assets/3991481/23154919/d5f98476-f818-11e6-8c71-22011a027d96.jpg)
 
 ## Configuration
 

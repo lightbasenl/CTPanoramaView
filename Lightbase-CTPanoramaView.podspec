@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name             = "CTPanoramaView"
+  s.name             = "Lightbase-CTPanoramaView"
   s.version          = "1.5"
   s.summary          = "Displays spherical or cylindrical panoramas and 360 photos with touch or motion based controls."
   s.homepage         = "https://github.com/lightbasenl/CTPanoramaView"
