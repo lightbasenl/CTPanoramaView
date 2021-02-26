@@ -36,6 +36,8 @@ import ImageIO
     // slow down pan rotation
     @objc public var panSpeed = CGPoint(x: 0.4, y: 0.4)
     @objc public var startAngle: Float = 0
+    
+    @objc public var allowRotation: Bool = false;
 
     @objc public var image: UIImage? {
         didSet {
@@ -282,40 +284,26 @@ import ImageIO
         sceneView.gestureRecognizers?.removeAll()
 
         if method == .touch {
+            if motionManager.isDeviceMotionActive {
+                motionManager.stopDeviceMotionUpdates()
+            }
+        } else {
+            startMotionUpdates()
+        }
+        if method == .both || method == .touch {
+            
             let panGestureRec = UIPanGestureRecognizer(target: self, action: #selector(handlePan(panRec:)))
             sceneView.addGestureRecognizer(panGestureRec)
 
             let pinchRec = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(pinchRec:)))
             sceneView.addGestureRecognizer(pinchRec)
 
-            let rotateRec = UIRotationGestureRecognizer(target: self, action: #selector(handleRotate(rotRec:)))
-            sceneView.addGestureRecognizer(rotateRec)
-
-            pinchRec.delegate = self
-            rotateRec.delegate = self
-
-            if motionManager.isDeviceMotionActive {
-                motionManager.stopDeviceMotionUpdates()
-            }
-
-        }
-        else {
-            if method == .both {
-                let panGestureRec = UIPanGestureRecognizer(target: self, action: #selector(handlePan(panRec:)))
-                sceneView.addGestureRecognizer(panGestureRec)
-
-                let pinchRec = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(pinchRec:)))
-                sceneView.addGestureRecognizer(pinchRec)
-
+            if (allowRotation) {
                 let rotateRec = UIRotationGestureRecognizer(target: self, action: #selector(handleRotate(rotRec:)))
                 sceneView.addGestureRecognizer(rotateRec)
-
-                pinchRec.delegate = self
                 rotateRec.delegate = self
             }
-
-            startMotionUpdates()
-
+            pinchRec.delegate = self
         }
     }
 
