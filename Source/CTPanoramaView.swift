@@ -284,16 +284,13 @@ import ImageIO
         sceneView.gestureRecognizers?.removeAll()
 
         if method == .touch {
-            let panGestureRec = UIPanGestureRecognizer(target: self, action: #selector(handlePan(panRec:)))
-            sceneView.addGestureRecognizer(panGestureRec)
-            
             if motionManager.isDeviceMotionActive {
                 motionManager.stopDeviceMotionUpdates()
             }
         } else {
             startMotionUpdates()
         }
-        if method == .both {
+        if method == .both || method == .touch {
             
             let panGestureRec = UIPanGestureRecognizer(target: self, action: #selector(handlePan(panRec:)))
             sceneView.addGestureRecognizer(panGestureRec)
@@ -308,7 +305,6 @@ import ImageIO
             }
             pinchRec.delegate = self
         }
-        
     }
 
     private func resetCameraAngles() {
